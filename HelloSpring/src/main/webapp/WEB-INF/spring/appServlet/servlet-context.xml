@@ -29,7 +29,7 @@
 	
 	<!-- 기본생성자로 생성된 객체 -->
 	<!-- <beans:bean id="emp" class="com.spring.hellospring.Employee"/> -->
-	<!-- Employee 클래스에 바로 S 아이콘이 생긴다 -->
+	<!-- Employee 클래스에 S 아이콘이 생긴다 -->
 	
 	<!-- 객체 생성시 값 넣기 -->
 	<beans:bean id="emp" class="com.spring.hellospring.Employee">
