@@ -7,10 +7,13 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.spring.hellospring.config.Student;
 
 /**
  * Handles requests for the application home page.
@@ -24,9 +27,12 @@ public class HomeController {
 	
 	// 210618
 	@Autowired
-	private Employee emp;
+	@Qualifier("emp1")
+	private Employee e;
+	// @Qualifier("emp") 를 안쓰면 에러 (xml에 Employee타입이 2개 있는데 e가 id값과 잂치하지도 않고, 2개중 뭐랑 매치할지도 모르기 때문 )
 	
-	
+	@Autowired
+	private Student s;
 	
 	
 	/**
@@ -45,9 +51,15 @@ public class HomeController {
 		
 		
 		
-				System.out.println(emp);
+				System.out.println(e);
+				// servlet-context.xml에서 필드dept에 객체를 참조시킴
+				// Employee [empNo=1, empName=김태희포, email=po@po.com, dept=Department(deptName=null, deptCount=0)]
+				// Employee [empNo=1, empName=김태희포, email=po@po.com, dept=Department(deptName=D1, deptCount=100)]
 		
-		
+				System.out.println(s);
+				
+				
+				
 		return "home"; // WEB-INF/views.home.jsp
 	}
 	

@@ -40,4 +40,12 @@ public class LgTV implements TV{
 		System.out.println("===> LgTV 객체 생성");
 	}
 	
+	public void initMethod() {
+		System.out.println("객체 초기화 작업 처리...");
+	}
+	
+	public void destroyMethod() {
+		System.out.println("객체 삭제 전에 처리할 로직 처리...");
+	}
+	
 }

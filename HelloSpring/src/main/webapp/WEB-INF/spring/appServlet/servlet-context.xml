@@ -17,7 +17,7 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="prefix" value="/WEB-INF/views/" /> <!-- prefix라는 필드를 가진다 는 뜻  -->
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
@@ -32,10 +32,23 @@
 	<!-- Employee 클래스에 S 아이콘이 생긴다 -->
 	
 	<!-- 객체 생성시 값 넣기 -->
+	<!--  setter 메소드를 통한 의존성 주입  -->
 	<beans:bean id="emp" class="com.spring.hellospring.Employee">
 		<beans:property name="empName" value="김태희포"/>
 		<beans:property name="empNo" value="1"/>
 		<beans:property name="email" value="po@po.com"/>
+		<beans:property name="dept" ref="dept"/>
 	</beans:bean>
+	
+	
+	
+	<!-- 210622 -->
+	<!-- 생성자를 통한 의존성 주입  -->
+	<beans:bean id="dept" class="com.spring.hellospring.Department">
+		<beans:constructor-arg index="0" value="D1"/>
+		<beans:constructor-arg index="1" value="100"/>
+	</beans:bean>
+	
+	<beans:bean id="emp1" class="com.spring.hellospring.Employee"></beans:bean>
 	
 </beans:beans>
