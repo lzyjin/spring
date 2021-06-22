@@ -25,18 +25,19 @@ public class DemoController2 {
 	
 	// 파라미터로 받을 수 있는 값 ( 장점 : 파라미터로 선언하면 자동으로 스프링 대입 )
 	
-	/*  매개변수를 선언만 하면 된다 
+	/*  
+	 *  -- 매개변수를 선언만 하면 된다 --
+	 *  
 	 *  1. HttpServletRequest
 	 *  2. HttpServletResponse 
 	 *  3. HttpSession
 	 *  4. java.util.Locale ( 지역 설정 정보 =  현재 서버의 위치에 대한 로컬값 ) 
-	 *  5. InputStream / Reader 
-	 *  6. OutputStream / Writer
+	 *  5. InputStream, Reader 
+	 *  6. OutputStream,  Writer
 	 *  
 	 *  
 	 *  
-	 *  
-	 *  Command 객체 : 파라미터값을 자동으로 객체로 받을 수 있다
+	 *  -- Command 객체 : 파라미터값을 자동으로 객체로 받을 수 있다 -- 
 	 *  
 	 *  7. vo객체, Map : 파라미터값을 자동으로 대입해서 받는다 
 	 *  8. Model : 데이터 공유 객체로 기본 request와 비슷하다
@@ -44,19 +45,18 @@ public class DemoController2 {
 	 *  
 	 *  
 	 *  
-	 *  특정 어노테이션을 선언해서 값을 받는 매개변수
+	 *  -- 특정 어노테이션을 선언해서 값을 받는 매개변수 --
 	 *  
-	 *  @RequestParam(value="parameter이름", 옵션..) 변수 = 변수 선언 
+	 *  @RequestParam(value="parameter이름", 옵션...) :  변수 선언 
+	 *  @RequestHeader(value="헤더의 key값") : 변수선언 (Header의 정보를 가져오는 것 )
+	 *  @CookieValue(value="쿠키의 key값") : 변수선언 (Cookie 값)
+	 * 
+	 * 
+	 * 
+	 *  -- 추가 메소드 선언부에 선언하는 어노테이션 -- 
 	 *  
-	 * @RequestHeader(value="헤더 key값") 변수선언 : Header의 정보를 가져오는 것 
-	 * 
-	 * @CookieValue(value="쿠키key값") 변수선언 : Cookie 값 
-	 * 
-	 * 
-	 * 
-	 * 추가 메소드 선언부에 선언하는 어노테이션
-	 * @PathVariable("값" : result방식으로 구현할 때 URL에 있는 데이터는 가져올 때 사용
-	 * @ResponseBody = 클랑언트에게 응답할 때 메소드 리턴값을 JSON형태로 반환해주는 어노테이션
+	 *  @PathVariable("값") : resultful방식으로 구현할 때 URL에 있는 데이터는 가져올 때 사용
+	 *  @ResponseBody = 클라이언트에게 응답할 때 메소드의 리턴값을 JSON형태로 반환해주는 어노테이션 ( 잭슨 라이브러리 이용 )
 	 *  
 	 */
 	
@@ -65,7 +65,10 @@ public class DemoController2 {
 	public String demo1(HttpServletRequest req, HttpServletResponse res) {
 		System.out.println(req.getParameter("devName"));
 		System.out.println(res);
+		
 		return "";
+		
+
 		
 	}
 

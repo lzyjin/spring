@@ -4,5 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- <bean id="tv" class="polymorphism.SamsungTV"></bean> -->
-	<bean id="tv" class="polymorphism.LgTV" init-method="initMethod" destroy-method="destroyMethod"></bean>
+	<!-- <bean id="tv" class="polymorphism.LgTV" init-method="initMethod" destroy-method="destroyMethod"></bean>  -->
+	<!-- <bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod"></bean>  -->
+	<!-- <bean id="tv" class="polymorphism.SamsungTV" lazy-init="true"></bean>  -->
+	
+	<!-- scope 속성의 default가 singleton -->
+	<!-- <bean id="tv" class="polymorphism.SamsungTV" scope="singleton"></bean> -->
+
+	<!-- scope 속성값을 prototype으로 하면 해당 bean을 요청할때마다 새로운 객체를 생성해서 반환한다 -->
+	<!-- <bean id="tv" class="polymorphism.SamsungTV" scope="prototype"></bean>  -->
+
+
+	<bean id="tv" class="polymorphism.SamsungTV">
+		<constructor-arg ref="sony"></constructor-arg>
+	</bean> 
+		
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+		
+		
 </beans>

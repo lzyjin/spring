@@ -27,9 +27,9 @@ public class HomeController {
 	
 	// 210618
 	@Autowired
-	@Qualifier("emp1")
+	@Qualifier("emp1") // 이름으로 bean 지정
 	private Employee e;
-	// @Qualifier("emp") 를 안쓰면 에러 (xml에 Employee타입이 2개 있는데 e가 id값과 잂치하지도 않고, 2개중 뭐랑 매치할지도 모르기 때문 )
+	// @Qualifier("emp1") 를 안쓰면 에러 (xml에 Employee타입이 2개 있는데 e가 id값과 잂치하지도 않고, 2개중 뭐랑 매치할지도 모르기 때문 )
 	
 	@Autowired
 	private Student s;

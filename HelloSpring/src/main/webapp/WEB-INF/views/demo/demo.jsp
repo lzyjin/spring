@@ -76,9 +76,10 @@
 				</div>
 			</div>
 		</form>
+		
 		<div class="list-group">
 			<button type="button" onclick="demo('demo1.do');" class="list-group-item list-group-item-action">
-				HttpRequest로 파라미터 처리하기
+				HttpRequest로 파라미터 처리하기 ( 기존 서블릿 방식 )
 			</button>
 		</div>
 	</div>
@@ -88,7 +89,7 @@
 <script>
 	function demo(url) {
 		$("#devFrm").attr("action", "${path}/demo/" + url);
-		$("#dev").submit();
+		$("#devFrm").submit();
 		
 	}
 </script>
