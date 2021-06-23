@@ -4,6 +4,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.hellospring.config.Student;
 
@@ -35,11 +40,10 @@ public class HomeController {
 	private Student s;
 	
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpSession session, HttpServletResponse response) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -60,7 +64,29 @@ public class HomeController {
 				
 				
 				
-		return "home"; // WEB-INF/views.home.jsp
+				
+		// 210623 
+		// session에 값넣고 컨트롤러에서 확인하기 
+		session.setAttribute("userId", "admin");
+		
+		
+		// cookie 생성하기
+		Cookie c = new Cookie("choco", "chip");
+		
+		c.setMaxAge(60*60*24);
+		
+		response.addCookie(c);		
+		
+				System.out.println("cookie :" + c);
+		
+		
+				
+				
+//		return "home"; // WEB-INF/views.home.jsp
+		
+//		return "redirect:/";  // redirect 쓸땐 이렇게. 메인화면으로 이동한다는 뜻 
+		
+		return "index";
 	}
 	
 }

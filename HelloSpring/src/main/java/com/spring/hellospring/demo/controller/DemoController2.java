@@ -1,14 +1,30 @@
 package com.spring.hellospring.demo.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.spring.hellospring.demo.model.service.DemoService;
+import com.spring.hellospring.demo.model.vo.Dev;
 
 @Controller
 public class DemoController2 {
 
+	
+	@Autowired
+	private DemoService service;
+	
 	
 	@RequestMapping("/demo/demo2.do")
 	public String demo() {
@@ -17,6 +33,9 @@ public class DemoController2 {
 		return "demo/demo"; // return값을 viewResolver에게 보낸다. /WEB-INF/views/demo/demo.jsp 로 이동하게된다 
 		// RequestDispatcher.forward(); 와 같다 
 	}
+	
+	
+	
 	
 	
 	
@@ -60,18 +79,214 @@ public class DemoController2 {
 	 *  
 	 */
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 서블릿과 동일하게 사용하기
 	@RequestMapping("/demo/demo1.do")
-	public String demo1(HttpServletRequest req, HttpServletResponse res) {
-		System.out.println(req.getParameter("devName"));
-		System.out.println(res);
+	public String demo1(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
 		
-		return "";
 		
+		
+//			System.out.println(req.getParameter("devName"));
+//			System.out.println(res);
+		
+//		    return "";
+		
+		
+		
+		// 210623 
+		
+		Dev dev = new Dev();
+		
+		dev.setDevName(req.getParameter("devName"));
+		dev.setDevAge(Integer.parseInt(req.getParameter("devAge")));
+		dev.setDevEmail(req.getParameter("devEmail"));
+		dev.setDevGender(req.getParameter("devGender"));
+		dev.setDevLang(req.getParameterValues("devLang"));
+		
+		req.setAttribute("dev", dev);
+		
+		
+		
+		// session을 사용하고 싶으면 매개변수로 HttpSession session를 받고 바로 사용가능 
+		// 저장된 session 확인하기 
+		System.out.println("session 값 : " + session.getAttribute("userId"));
+		
+		// index.jsp를 views폴더 안으로 옮김 
+		
+		
+		
+		return "demo/demoResult";
 
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//@RequestParam 어노테이션 이용하기 
+	
+	// 클라이언트가 전송하는 값을 1:1로 매개변수로 바로 받을 수 있다 
+	
+	// @RequestParam으로 가져오면 디폴트로 required가 true다 ( 라디오버튼 선택안하면 에러 ) 
+	// 없어도 되는 값으로 처리하려면 required = false 로 설정한다
+	// 나이같은 경우 값이 없으면 null이 들어오는데 int타입으로 받으니까 에러난다 
+	// -> 해결방법 : defaultValue = "1" 디폴트값을 설정해준다 
+	// 배열도 
+	
+	@RequestMapping("/demo/demoTwo.do")
+//	public String demoTwo(@RequestParam(value="devName") String devName, 
+//							@RequestParam(value="devAge", required = false, defaultValue = "1") int devAge,
+//							@RequestParam(value="devEmail") String devEmail,
+//							@RequestParam(value="devGender", required = false) String devGender,
+//							@RequestParam(value="devLang") String[] devLang, 
+//							Model m) {
+	
+	// 이렇게 작성 가능
+	// 단, 모든 값이 입력되어있다는 전제 하에 
+	public String demoTwo(String devName, int devAge, String devEmail, String devGender, String[] devLang, Model m) {	
+		
+		
+		
+		
+				System.out.println(devName + ", " + devAge + ", " + devEmail + ", " + devGender);
+		
+				
+				
+				
+		// request를 굳이 안해도 model이라는 객체를 이용할 수 있다 
+		// 매개변수로 받으면 바로 사용 가능 
+				
+		Dev d = Dev.builder().devName(devName).devAge(devAge).devEmail(devEmail).
+					  devGender(devGender).devLang(devLang).build();
+				
+		
+		
+		
+		// Model 객체를 이용해서 서버데이터 전송하기
+		// addAttribute() : 데이터를 저장할 때 key/value 형식으로 저장 
+				
+		
+		m.addAttribute("dev", d);
+		// request와 생존주기가 동일하다 
+		
+		
+		
+		
+		for(String dl : devLang) {
+			System.out.print(dl + ",");
+		}
+	
+		
+		return "demo/demoResult";
+	}
 
+	
+	
+	
+	// Command 객체로 파라미터 받아오기
+	
+	// Command 객체로 지정된 객체의 멤버변수와 파라미터의 key값이 일치해야 대입할 수 있다
+	// default생성자로 생성 후 setter로 값을 대입한다 : 메소드 명명규칙을 준수해야한다 
+	
+	// 주의할 점 
+	// 기본자료형을 제외한 자료형(객체자료형)이 있으면 대입이 제한된다 
+	@RequestMapping("/demo/demo3.do")
+	public String demo3(Dev dev, Model m) {
+		
+		m.addAttribute("dev", dev);
+		
+		
+		return "demo/demoResult";
+	}
+	
+	
+	
+	
+	
+	
+	// Map객체를 이용해서 파라미터 처리하기
+	// 기본자료형(배열x)
+	@RequestMapping("/demo/demo4.do")
+	public String demo4(@RequestParam Map param, Model m, String[] devLang) {
+		
+				System.out.println(param);
+				
+		for(String d : devLang) {
+			System.out.println(d);
+		}
+		
+		
+		param.put("devLang", devLang);
+		m.addAttribute("dev", param);
+		
+	
+		return "demo/demoResult";
+	}
+	
+	
+	
+	
+	
+	
+	// 추가데이터를 매개변수로 받기 ( header , cookie )
+	@RequestMapping("/demo/demo5.do")
+	public String demo5(@RequestHeader(value="User-agent") String userAgent,
+						@RequestHeader(value="Referer") String prevPage, 
+						@CookieValue(value="choco", required = false) String snack) {
+		
+				System.out.println(userAgent); // Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36
+				System.out.println(prevPage); // http://localhost:9090/hellospring/demo/demo2.do
+				System.out.println(snack); // chip
+		
+		
+		return "demo/demo";
+	}
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/demo/insertDev.do")
+	public String insertDev(Dev dev) {
+		
+		
+		// Service의 insertDev() 호출 
+		int result = service.insertDev(dev);
+		
+
+		return "demo/demo";
+	}
+	
+	
+	
+	// 전체 개발자 조회
+	@RequestMapping("/demo/demoList.do")
+	public String selectDevList(Model m) {
+		
+		List<Dev> list = service.selectDevList();
+		
+		m.addAttribute("list", list);
+		
+				System.out.println("list : " + list);
+		
+		return "demo/demoList";
+	}
+	
 	
 	
 }

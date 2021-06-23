@@ -38,7 +38,7 @@
 				<a class="navbar-brand" href="#">
 					<img src="${ path }/resources/images/logo-spring.png" alt="spring-logo" width="50px">
 				</a>
-				<button class="navbar-toggler" type="button" data-target="#navbarNav" 
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
 						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>		
 				</button>
@@ -50,9 +50,21 @@
 						<li class="nav-item">
 							<a class="nav-link" href="">Board</a>
 						</li>
-						<li class="nav-item">
+						<%-- <li class="nav-item">
 							<a class="nav-link" href="${ path }/demo/demo2.do">Demo</a>
-						</li>
+						</li> --%>
+						
+				  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                     role="button" data-toggle="dropdown" aria-haspopup="true"
+                     aria-expanded="false">
+                        demo
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="${path }/demo/demo.do">Demo등록</a>
+                        <a class="dropdown-item" href="${path }/demo/demoList.do">Demo목록</a>
+                     </div>
+                  </li>
 						
 					</ul>
 				</div>

@@ -4,7 +4,31 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<bean id="emp" class="com.spring.hellospring.Employee">
+	<bean id="emp" class="com.spring.hellospring.Employee"/>
 	
-</bean>
+	
+	<!-- 210623 -->
+	<!-- DB 관련 bean 객체 등록하기 -->
+	<!-- 
+		1. JDBC 연결을 위한 DataSource 클래스를 등록 ( 객체명 : BasicDataSource )
+		2. mybatis에서 사용하느 SqlSessionFactory 클래스를 등록 ( 객체명 : SqlSessionFactoryBean )
+		3. mybatis를 사용하기 위해서 SqlSessionTemplate 클래스를 등록 ( 객체명 : SqlSessionTemplate == SqlSession )
+	 -->
+	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+	 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+	 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+	 	<property name="username" value="spring"></property>
+	 	<property name="password" value="spring"></property>
+	 </bean>
+	 
+	 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" ref="dataSource"></property>
+	 	<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	 	<property name="mapperLocations" value="classpath*:mapper/**/*.xml"></property>
+	 </bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
+	</bean>
+
 </beans>

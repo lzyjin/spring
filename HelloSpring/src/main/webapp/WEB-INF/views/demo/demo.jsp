@@ -82,6 +82,32 @@
 				HttpRequest로 파라미터 처리하기 ( 기존 서블릿 방식 )
 			</button>
 		</div>
+		
+		<div class="list-group">
+			<button type="button" onclick="demo('demoTwo.do');" class="list-group-item list-group-item-action">
+				@RequestParam 어노테이션을 이용해서 파라미터 처리하기
+			</button>
+		</div>
+		<div class="list-group">
+			<button type="button" onclick="demo('demo3.do');" class="list-group-item list-group-item-action">
+				Command 객체(Vo)를 이용해서  파라미터 처리하기
+			</button>
+		</div>
+		<div class="list-group">
+			<button type="button" onclick="demo('demo4.do');" class="list-group-item list-group-item-action">
+				Map객체를 이용해서 파라미터 처리하기
+			</button>
+		</div>
+		<div class="list-group">
+			<button type="button" onclick="demo('demo5.do');" class="list-group-item list-group-item-action">
+				추가데이터 가져오기 ( header, cookie )
+			</button>
+		</div>
+		<div class="list-group">
+			<button type="button" onclick="demo('insertDev.do');" class="list-group-item list-group-item-action">
+				Dev 데이터 입력하기 
+			</button>
+		</div>
 	</div>
 	
 </section>
