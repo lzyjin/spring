@@ -29,7 +29,14 @@
 					<td><c:out value="${ dev.devEmail }"/></td>
 					<td><c:out value="${ dev.devGender }"/></td>
 					<td>
-						
+						<c:if test="${ not empty dev.devLang }">
+							<c:forEach items="${ dev.devLang }" var="value" varStatus="vs">
+								<c:out value="${ value }"/>
+								<c:if test="${ not vs.last }">
+									<c:out value=","/>
+								</c:if>
+							</c:forEach>
+						</c:if>
 					</td>
 					<td><button>수정하기</button></td>
 				</tr>

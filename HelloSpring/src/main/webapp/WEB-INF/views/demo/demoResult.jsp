@@ -21,35 +21,21 @@
 	<table class="table" id="tbl-dev">
 		<tr>
 			<th scope="col">이름</th>
-			<td><c:out value="${ requestScope.dev.devName }"/></td>
-		</tr>
-		<tr>
 			<th scope="col">나이</th>
-			<td><c:out value="${ requestScope.dev.devAge }"/></td>
-		</tr>
-		<tr>
 			<th scope="col">이메일</th>
-			<td><c:out value="${ requestScope.dev.devEmail }"/></td>
-		</tr>
-		<tr>
 			<th scope="col">성별</th>
-			<td><c:out value="${ requestScope.dev.devGender }"/></td>
+			<th scope="col">개발가능언어</th>
+			
 		</tr>
 		<tr>
-			<th scope="col">개발가능언어</th>
+			<td><c:out value="${ requestScope.dev.devName }"/></td>
+			<td><c:out value="${ requestScope.dev.devAge }"/></td>
+			<td><c:out value="${ requestScope.dev.devEmail }"/></td>
+			<td><c:out value="${ requestScope.dev.devGender }"/></td>
 			<td>
-				<c:if test="${ not empty requestScope.dev.devLang }">
-					<c:forEach items="${ requestScope.dev.devLang }" var="value" varStatus="vs">
-						<c:out value="${ value }"/>
-						<c:if test="${ not vs.last }">
-							<c:out value=","/>
-						</c:if>
-					</c:forEach>
-
-				</c:if>
 			</td>
-		</tr>	
-	
+		</tr>
+
 	</table>
 </section>
 

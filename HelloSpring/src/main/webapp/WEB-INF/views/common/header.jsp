@@ -61,7 +61,7 @@
                         demo
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="${path }/demo/demo.do">Demo등록</a>
+                        <a class="dropdown-item" href="${path }/demo/demo2.do">Demo등록</a>
                         <a class="dropdown-item" href="${path }/demo/demoList.do">Demo목록</a>
                      </div>
                   </li>

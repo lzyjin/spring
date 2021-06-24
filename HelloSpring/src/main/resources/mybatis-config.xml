@@ -4,9 +4,8 @@
 
 	<typeAliases>
 		<typeAlias type="com.spring.hellospring.demo.model.vo.Dev" alias="dev"/>
+		<typeAlias type="com.spring.hellospring.common.StringArrayTypeHandler" alias="strArr"/>
 	</typeAliases>
-
-
 
 
 </configuration>

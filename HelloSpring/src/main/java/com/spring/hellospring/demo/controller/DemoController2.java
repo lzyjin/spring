@@ -282,6 +282,12 @@ public class DemoController2 {
 		
 		m.addAttribute("list", list);
 		
+				System.out.println();
+				String[] temp = list.get(1).getDevLang();
+				for(String a: temp) {
+					System.out.println(a);
+				}
+			
 				System.out.println("list : " + list);
 		
 		return "demo/demoList";
