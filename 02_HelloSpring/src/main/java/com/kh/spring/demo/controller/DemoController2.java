@@ -1,4 +1,4 @@
-package com.spring.hellospring.demo.controller;
+package com.kh.spring.demo.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.hellospring.demo.model.service.DemoService;
-import com.spring.hellospring.demo.model.vo.Dev;
+import com.kh.spring.demo.model.service.DemoService;
+import com.kh.spring.demo.model.vo.Dev;
 
 @Controller
 public class DemoController2 {
@@ -88,7 +88,7 @@ public class DemoController2 {
 	
 	
 	
-	// 서블릿과 동일한 방식으로 사용하기
+	// 서블릿과 동일하게 사용하기
 	@RequestMapping("/demo/demo1.do")
 	public String demo1(HttpServletRequest req, HttpServletResponse res, HttpSession session) {
 		

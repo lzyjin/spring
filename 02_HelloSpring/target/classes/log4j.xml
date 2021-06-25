@@ -5,14 +5,35 @@
 	<!-- Appenders -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
+		
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<!-- <param name="ConversionPattern" value="%-5p: %c - %m%n" /> -->
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p [%l] - %m%n" />
+		</layout>
+		
+		<!-- 210625 -->
+		<!-- <layout class="org.apache.log4j.SimpleLayout"/> -->
+		<!-- <layout class="org.apache.log4j.HTMLLayout"/> -->
+		<!-- <layout class="org.apache.log4j.xml.XMLLayout"/> -->
+		
+	</appender>
+	
+	<!-- appender 등록 -->
+	<appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/Users/yejin/spring/logs/spring.logs"/>
+		<param name="append" value="true"/>
+		<param name="datePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p [%l] - %m%n" />
 		</layout>
 	</appender>
 	
+	
+	
 	<!-- Application Loggers -->
 	<logger name="com.kh.spring">
-		<level value="info" />
+		<!-- <level value="info" /> -->
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -26,16 +47,22 @@
 	
 	<logger name="org.springframework.context">
 		<level value="info" />
+		<!-- <level value="debug" /> -->
+		
 	</logger>
 
 	<logger name="org.springframework.web">
 		<level value="info" />
+		<!-- <level value="error" /> -->
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		
+		<!-- 추가 등록한 appender -->
+		<appender-ref ref="fileLogger" /> 
 	</root>
 	
 </log4j:configuration>

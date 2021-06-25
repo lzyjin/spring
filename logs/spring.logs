@@ -1,0 +1,56 @@
+[2021-06-25 12:10:19] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:271)] - Root WebApplicationContext: initialization started
+[2021-06-25 12:10:21] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)] - Root WebApplicationContext initialized in 2493 ms
+[2021-06-25 12:10:21] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)] - Initializing Servlet 'appServlet'
+[2021-06-25 12:10:24] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)] - Completed initialization in 2845 ms
+[2021-06-25 12:12:12] DEBUG [com.kh.spring.controller.MemberController.memberLogin(MemberController.java:79)] - 1234
+[2021-06-25 12:37:40] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:271)] - Root WebApplicationContext: initialization started
+[2021-06-25 12:37:43] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)] - Root WebApplicationContext initialized in 2989 ms
+[2021-06-25 12:37:43] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)] - Initializing Servlet 'appServlet'
+[2021-06-25 12:37:47] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)] - Completed initialization in 3587 ms
+[2021-06-25 12:37:50] WARN  [org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1251)] - No mapping for GET /spring/demo/demo2.do
+[2021-06-25 12:37:59] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:18)] - ===== start =====
+[2021-06-25 12:37:59] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:19)] - /spring/member/memberLogin.do
+[2021-06-25 12:37:59] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:20)] - =================
+[2021-06-25 12:37:59] DEBUG [com.kh.spring.controller.MemberController.memberLogin(MemberController.java:79)] - 1234
+[2021-06-25 12:44:28] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:271)] - Root WebApplicationContext: initialization started
+[2021-06-25 12:44:30] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)] - Root WebApplicationContext initialized in 2651 ms
+[2021-06-25 12:44:30] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)] - Initializing Servlet 'appServlet'
+[2021-06-25 12:44:34] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)] - Completed initialization in 3794 ms
+[2021-06-25 12:44:43] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:23)] - ===== start =====
+[2021-06-25 12:44:43] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:24)] - /spring/member/memberLogin.do
+[2021-06-25 12:44:43] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:25)] - =================
+[2021-06-25 12:44:43] DEBUG [com.kh.spring.controller.MemberController.memberLogin(MemberController.java:79)] - 1234
+[2021-06-25 12:44:44] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:39)] - ============== view ==============
+[2021-06-25 12:44:44] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:40)] - view로 응답하기 
+[2021-06-25 12:44:44] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:41)] - ============== view ==============
+[2021-06-25 13:38:31] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:271)] - Root WebApplicationContext: initialization started
+[2021-06-25 13:38:34] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)] - Root WebApplicationContext initialized in 3237 ms
+[2021-06-25 13:38:35] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)] - Initializing Servlet 'appServlet'
+[2021-06-25 13:38:39] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)] - Completed initialization in 3985 ms
+[2021-06-25 13:38:46] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:25)] - ===== start =====
+[2021-06-25 13:38:46] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:26)] - /spring/member/memberLogin.do
+[2021-06-25 13:38:46] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:27)] - -----------------
+[2021-06-25 13:38:46] DEBUG [com.kh.spring.controller.MemberController.memberLogin(MemberController.java:79)] - 1234
+[2021-06-25 13:38:48] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:52)] - ============== view ==============
+[2021-06-25 13:38:48] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:53)] - view로 응답하기 
+[2021-06-25 13:38:48] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:54)] - 응답페이지 : common/msg
+[2021-06-25 13:38:48] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:55)] - ----------------------------------
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:25)] - ===== start =====
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:26)] - /spring/member/logout.do
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:27)] - -----------------
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:52)] - ============== view ==============
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:53)] - view로 응답하기 
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:54)] - 응답페이지 : redirect:/
+[2021-06-25 13:39:03] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:55)] - ----------------------------------
+[2021-06-25 13:40:03] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:271)] - Root WebApplicationContext: initialization started
+[2021-06-25 13:40:06] INFO  [org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:307)] - Root WebApplicationContext initialized in 2780 ms
+[2021-06-25 13:40:06] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:525)] - Initializing Servlet 'appServlet'
+[2021-06-25 13:40:09] INFO  [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:547)] - Completed initialization in 3665 ms
+[2021-06-25 13:40:18] DEBUG [com.kh.spring.controller.MemberController.memberLogin(MemberController.java:79)] - 1234
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:25)] - ===== start =====
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:26)] - /spring/member/logout.do
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.preHandle(LoggerInterceptor.java:27)] - -----------------
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:52)] - ============== view ==============
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:53)] - view로 응답하기 
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:54)] - 응답페이지 : redirect:/
+[2021-06-25 13:40:23] DEBUG [com.kh.spring.common.LoggerInterceptor.postHandle(LoggerInterceptor.java:55)] - ----------------------------------

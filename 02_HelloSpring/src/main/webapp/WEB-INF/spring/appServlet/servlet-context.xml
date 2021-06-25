@@ -24,5 +24,23 @@
 	<context:component-scan base-package="com.kh.spring" />
 	
 
+	<!-- 210625 -->
+	<!-- interceptor 등록하기 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/*"/>
+			<exclude-mapping path="/member/memberLogin*"/> <!--  제외할 주소들 -->
+			
+			<!-- 어떤 인터셉터로 등록된 것을 이용할것인지 -->
+			<beans:bean id="logger" class="com.kh.spring.common.LoggerInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/demo/*"></mapping>
+			<beans:bean id="logincheck" class="com.kh.spring.common.LoginCheckInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
+
 	
 </beans:beans>
