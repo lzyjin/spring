@@ -47,18 +47,18 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, 
 							Object handler, ModelAndView modelAndView) throws Exception {
 		
-		// ModelAndView : 프론트에 보낼 데이터가 저장된 객체와 화면.....?
+		// ModelAndView : 프론트에 보낼 데이터가 저장된 객체와 화면(프론트페이지)
 		
 		log.debug("============== view ==============");
-		log.debug("view로 응답하기 ");
+		log.debug("view로 응답하기 전");
 		log.debug("응답페이지 : {}", modelAndView.getViewName());
 		log.debug("----------------------------------");
 		
 		
-		// 어떤 화면으로 출력하는지를 알 수 있다
+		// 어떤 화면으로 출력하는지(넘어가는지)를 알 수 있다
 		// modelAndView.getViewName(); 
 		
-		// 
+		// model에 대한 정보 알 수 있따
 		// modelAndView.getModel().get("");
 
 		super.postHandle(request, response, handler, modelAndView);

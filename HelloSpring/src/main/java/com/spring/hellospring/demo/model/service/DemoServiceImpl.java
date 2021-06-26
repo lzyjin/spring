@@ -15,6 +15,8 @@ public class DemoServiceImpl implements DemoService{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// SqlSessionTemplate는 bean으로 등록해놨기때문에 사용가능 
+	
 	@Autowired
 	private DemoDao dao;
 

@@ -33,7 +33,16 @@
 			<td><c:out value="${ requestScope.dev.devEmail }"/></td>
 			<td><c:out value="${ requestScope.dev.devGender }"/></td>
 			<td>
-			</td>
+ 				<c:if test="${ not empty requestScope.dev.devLang }">
+ 					<c:forEach items="${ requestScope.dev.devLang }" var="value" varStatus="vs">
+ 						<c:out value="${ value }"/>
+ 						<c:if test="${ not vs.last }">
+ 							<c:out value=","/>
+ 						</c:if>
+ 					</c:forEach>
+
+ 				</c:if>
+ 			</td>
 		</tr>
 
 	</table>

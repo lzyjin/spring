@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
-		INSERT INTO MEMBER VALUES(#{userId}, #{password}, #{userName}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby, typeHandler=strArr}, DEFAULT )
+		INSERT INTO MEMBER VALUES(#{userId}, #{password}, #{userName}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby, typeHandler=strArr}, DEFAULT)
 	</insert>
 	
 	<resultMap type="member" id="memMap" >

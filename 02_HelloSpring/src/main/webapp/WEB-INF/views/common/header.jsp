@@ -78,7 +78,7 @@
 					</c:if>
 					<c:if test="${ loginMember != null }">
 						<span>
-							<a href="${ path }/member/memberView.do">${loginMember.getUserName() }</a>님, 환영합니다!
+							<a href="${ path }/member/memberView.do">${loginMember.userName }</a>님, 환영합니다!
 						</span>
 						&nbsp;&nbsp;
 						<button class="btn btn-outline-success my-2 my-sm-0" type="button"

@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 //@SessionAttributes({"loginMember", })
 @SessionAttributes("loginMember")
-@Slf4j
+@Slf4j // 이 어노테이션을 쓰면 log로 바로 Logger객체를 사용할 수 있다 
 public class MemberController {
 	
 	@Autowired
@@ -43,17 +43,20 @@ public class MemberController {
 		
 	}
 	
+	// 회원등록 서비스
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String memberEnrollEnd(Member member, Model model) {
 		
 				// System.out.println("controller에서 테스트, 암호화전 member : " + member);
 				// System.out.println("controller에서 테스트, 암호화전 : " + member.getPassword());
+					
+					// debug() 메소드의 매개변수로는 문자열만 넣을수 있는데 객체를 넣어야 한다면 아래와 같이 작성한다
 					log.debug("파라미터값 {}",member);
 					log.debug("암호화전 : {}", member.getPassword());
 				
 				
 		// 비밀번호 단방향 암호화 적용 
-		// BCryptPasswordEncoder객체의 encode() 메소드를 이용하면 된다
+		// BCryptPasswordEncoder객체의 encode(암호화할값) 메소드를 이용하면 된다
 		member.setPassword(pwEncoder.encode(member.getPassword()));
 				
 				// System.out.println("controller에서 테스트, 암호화후 : " +  pwEncoder.encode(member.getPassword()));		
@@ -62,7 +65,7 @@ public class MemberController {
 		int result = service.insertMember(member);
 		
 		model.addAttribute("msg", result > 0 ? "회원가입성공" : "회원가입실패");
-		model.addAttribute("loc", "index.jsp");
+		model.addAttribute("loc", "/");
 		
 		return "common/msg";
 		
@@ -105,6 +108,7 @@ public class MemberController {
 		// 비교를 위한 메소드가 있다
 		// BCryptPasswordEncoder객체의 matches() 메소드
 		// matches(지금 입력받은 원본값(암호화전값), 암호화된 값) -> 반환값은 boolean
+		// 두 비교값이 일치하면 true, 일치하지 않으면 false
 			
 		
 		Member m = service.memberLogin(param);
@@ -156,8 +160,8 @@ public class MemberController {
 		
 		
 		
-		// redirect 해야한다 
+		// 로그아웃하면 redirect 해야한다 
 		// "redirect:주소" 
-		return "redirect:/";
+		return "redirect:/"; // 메인화면으로 이동 ( url창의 주소가 바뀐다 ) 
 	}
 }

@@ -9,7 +9,7 @@
 <body>
 	<script>
 		alert("${msg}");
-		location.assign("${pageContext.request.contextPath }/${loc}");
+		location.assign("${pageContext.request.contextPath }${loc}");
 	</script>
 </body>
 </html>

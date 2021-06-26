@@ -10,7 +10,7 @@ import org.apache.ibatis.type.TypeHandler;
 
 // mybatis에서 사용할 타입객체로 등록 
 // TypeHandler 인터페이스를 구현하면 된다 
-public class StringArrayTypeHandler implements TypeHandler<String[]> {
+public class StringArrayTypeHandler implements TypeHandler<String[]> { // 제네릭에 들어갈 타입은 내가 지정하는 것
 	
 	
 	// setParameter() 메소드는 
@@ -50,7 +50,6 @@ public class StringArrayTypeHandler implements TypeHandler<String[]> {
 		
 		return cs.getString(columnIndex).split(",");
 	}
-
 
 
 }
