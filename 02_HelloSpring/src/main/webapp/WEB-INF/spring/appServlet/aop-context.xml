@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+	<!-- 210628 -->
+	<!--
+		 aop 설정하기 
+		 
+		 1. aop:config 태그 이용
+		 	aop:aspect 태그 클래스 등록  ( aspect로 사용할 클래스가 bean으로 등록되어있어야함 )
+		 		aop:pointcut 표현식 
+		 		aop:advisor(before||after||around||after returning||after throwing)
+	-->
+	
+	<bean id="loggerAspect" class="com.kh.spring.common.aop.LoggerAspect"/>
+	
+	<!-- <aop:config>
+		<aop:aspect ref="loggerAspect">
+			<aop:pointcut expression="execution(* com.kh.spring.memo.model.service.*ServiceImpl.*(..))" id="loggerPC"/>
+			<aop:pointcut expression="execution(* com.kh.spring.memo.model..*Insert(..))" id="loggerPC"/>
+			<aop:pointcut expression="execution(* com.kh.spring.memo..*(..))" id="loggerPC"/>
+			<aop:before method="loggerBefore" pointcut-ref="loggerPC"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+	
+	<!-- 어노테이션으로 aop적용하려면 이 태그 필요  -->
+	<aop:aspectj-autoproxy/>
+	
+	
+</beans>

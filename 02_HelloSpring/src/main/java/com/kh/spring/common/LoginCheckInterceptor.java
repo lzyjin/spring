@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.kh.spring.model.vo.Member;
+import com.kh.spring.member.model.vo.Member;
 
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 

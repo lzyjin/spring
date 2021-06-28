@@ -28,6 +28,27 @@
 		</layout>
 	</appender>
 	
+	<!-- 210628 -->
+	<!-- sql출력할 로거 -->
+	<appender name="sqlLogger" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p : %m%n"/>
+		</layout>
+	</appender>
+	
+	<!--  root와 상관없이 실행되도록 additivity속성을 false로 한것임  -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="sqlLogger"/>
+	</logger>
+	
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="sqlLogger"/>
+	</logger>
+	
+	
+	
 	
 	
 	<!-- Application Loggers -->
@@ -55,6 +76,9 @@
 		<level value="info" />
 		<!-- <level value="error" /> -->
 	</logger>
+	
+	
+	
 
 	<!-- Root Logger -->
 	<root>

@@ -10,7 +10,7 @@
 		</foreach> -->
 		
 		<!-- 210624 -->
-		#{ devLang, typeHandler=com.spring.hellospring.common.StringArrayTypeHandler}
+		#{ devLang, typeHandler=strArr}
 		
 		)
 	</insert>
