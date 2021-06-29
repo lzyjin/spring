@@ -41,7 +41,7 @@
             			<td><c:out value="${ m.memoNo }"/></td>
             			<td><c:out value="${ m.memo }"/></td>
             			<td><fmt:formatDate type="both" dateStyle="long" timeStyle="short" value="${ m.memoDate }"/></td>
-            			<td><button class="del_memo">메모삭제</button></td>
+            			<td><button onclick="fn_del_memo(event);">메모삭제</button></td>
             		</tr>
             	</c:forEach>
             </c:if>
@@ -51,14 +51,18 @@
 </section>
 
 <script>
-	$(".del_memo").click( (e) => {
+	const fn_del_memo = (e) => {
+		
+		// console.log($(e.target));
 		
 		let memoNo = $(e.target).parent().siblings().first().html();
 		
-		/* console.log(memoNo); */
+		// console.log(memoNo);
 		
 		location.assign("${ path }/memo/memoDelete.do?no="+memoNo);
-	} );
+		
+		
+	}
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

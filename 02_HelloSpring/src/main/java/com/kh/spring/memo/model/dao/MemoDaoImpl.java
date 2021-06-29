@@ -22,5 +22,11 @@ public class MemoDaoImpl implements MemoDao{
 		return sqlSession.selectList("memo.memoList");
 	}
 
+	@Override
+	public int memoDelete(SqlSessionTemplate sqlSession, int memoNo) {
+		
+		return sqlSession.delete("memo.memoDelete", memoNo);
+	}
+
 	
 }

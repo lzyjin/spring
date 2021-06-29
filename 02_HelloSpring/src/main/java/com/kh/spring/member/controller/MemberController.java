@@ -113,7 +113,7 @@ public class MemberController {
 		
 		Member m = service.memberLogin(param);
 
-				System.out.println("controller에서 테스트, m : " + m);
+				// System.out.println("controller에서 테스트, m : " + m);
 			
 		String msg = "로그인실패";
 		

@@ -7,6 +7,8 @@
 		<typeAlias type="com.kh.spring.demo.model.vo.Dev" alias="dev"/>
 		<typeAlias type="com.kh.spring.common.StringArrayTypeHandler" alias="strArr"/>
 		<typeAlias type="com.kh.spring.memo.model.vo.Memo" alias="memo"/>
+		<typeAlias type="com.kh.spring.board.model.vo.Board" alias="board"/>
+		<typeAlias type="com.kh.spring.board.model.vo.Attachment" alias="attachment"/>
 	</typeAliases>
 
 </configuration>

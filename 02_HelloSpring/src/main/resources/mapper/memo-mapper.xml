@@ -11,4 +11,8 @@
 		SELECT * FROM MEMO
 	</select>
 	
+	<delete id="memoDelete" parameterType="_int">
+		DELETE FROM MEMO WHERE MEMONO = #{ memoNo }
+	</delete>
+	
 </mapper>

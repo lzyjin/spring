@@ -63,8 +63,17 @@ public class MemoController {
 	}
 	
 	
-//	@RequestMapping("memo/memoDelete.do")
-//	public String memoDelete(@RequestParam()) {
-//		
-//	}
+	@RequestMapping("memo/memoDelete.do")
+	public String memoDelete(@RequestParam(value="no") String no, HttpServletRequest request) {
+		
+		int memoNo = Integer.parseInt(no);
+		
+		int result = service.memoDelete(memoNo);
+		
+		request.setAttribute("msg", result > 0 ? "메모삭제성공" : "메모삭제실패");
+		request.setAttribute("loc", "/memo/memo.do");
+		
+		return "common/msg";
+		
+	}
 }

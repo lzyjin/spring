@@ -11,4 +11,6 @@ public interface MemoService {
 
 	List<Memo> memoList();
 
+	int memoDelete(int memoNo);
+
 }

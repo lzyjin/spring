@@ -49,7 +49,7 @@
 							<a class="nav-link" href="${ path }">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="">Board</a>
+							<a class="nav-link" href="${ path }/board/boardList.do">Board</a>
 						</li>
 						<%-- <li class="nav-item">
 							<a class="nav-link" href="${ path }/demo/demo2.do">Demo</a>

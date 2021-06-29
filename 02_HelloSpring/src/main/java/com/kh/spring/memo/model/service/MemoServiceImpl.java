@@ -30,4 +30,10 @@ public class MemoServiceImpl implements MemoService{
 		return dao.memoList(sqlSession);
 	}
 
+	@Override
+	public int memoDelete(int memoNo) {
+		
+		return dao.memoDelete(sqlSession, memoNo);
+	}
+
 }

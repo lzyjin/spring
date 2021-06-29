@@ -12,4 +12,6 @@ public interface MemoDao {
 
 	List<Memo> memoList(SqlSessionTemplate sqlSession);
 
+	int memoDelete(SqlSessionTemplate sqlSession, int memoNo);
+
 }
