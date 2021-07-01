@@ -14,13 +14,13 @@
 		
 <section id="board-container" class="container">
 
-<c:set var="totalContents" value="${ requestScope.list.size() }"/>
+<c:set var="totalData" value="${ requestScope.totalData }"/>
 
 	<br><br>
 	
 	<p>총 ${totalContents }건의 게시물이 있습니다.</p>
 	
-	<button type="button" class="btn btn-outline-success btn-block" onclick="location.assign('${ path }/board/boardInsert.do')">게시글 작성</button>
+	<button type="button" class="btn btn-outline-success btn-block" onclick="location.assign('${ path }/board/boardForm.do')">게시글 작성</button>
 	<br><br>
         
     <table id="tbl-board" class="table table-striped table-hover">
@@ -35,12 +35,22 @@
             <c:choose>
            <c:when test="${ not empty requestScope.list }">
            		<c:forEach var="b" items="${ requestScope.list }">
-           			<tr onclick="fn_boardView(event);">
+           			<!-- <tr onclick="fn_boardView(event);"> -->
+           			<tr>
            				<td class="boardNo"><c:out value="${ b.boardNo }"/></td>
-           				<td><c:out value="${ b.boardTitle }"/></td>
+           				<td><a href="${ path }/board/boardView.do?no=${b.boardNo}"><c:out value="${ b.boardTitle }"/></a></td>
            				<td><c:out value="${ b.boardWriter }"/></td>
            				<td><fmt:formatDate type="both" dateStyle="long" timeStyle="short" value="${ b.boardDate }"/></td>
-           				<td><c:out value="${ b.attachments.size() }"/></td>
+           				<td>
+           					<c:choose>
+           					<c:when test="${ b.attachments.size() > 0 && b.attachments[0].originalFileName!=null}">
+           						<c:out value="${ b.attachments.size() }"/>
+           					</c:when>
+           					<c:otherwise>
+           						<c:out value="첨부 파일이 없습니다."/>
+           					</c:otherwise>
+           					</c:choose>
+           				</td>
            				<td><c:out value="${ b.boardReadCount }"/></td>
            			</tr>
            		</c:forEach>

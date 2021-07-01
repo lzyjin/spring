@@ -13,5 +13,8 @@ public interface BoardService {
 	List<Board> selectBoardList(int cPage, int numPerPage);
 
 	Board selectBoard(int boardNo);
-
+	
+	// 210701
+	// 파일 업로드
+	int insertBoard(Board b);
 }

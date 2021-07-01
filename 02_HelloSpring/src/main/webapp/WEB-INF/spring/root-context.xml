@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<bean id="member" class="com.kh.spring.member.model.vo.Member"></bean>
 	
@@ -34,5 +38,26 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	</bean>
+		
+	<!-- 210701 -->	
+	<!-- 트랜잭션매니저 등록하기 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+
+	</bean>
+		
+	<!-- @Transactional을 활용하기 위해서는 추가설정을 해야한다 -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/>	 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes >
+			<tx:method name="insert*"/>
+		</tx:attributes>
+	</tx:advice>	
+	
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(* fom.kh.spring..*ServiceImpl.*(..))" id="txp"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txp"/>
+	</aop:config>
+		
 		
 </beans>

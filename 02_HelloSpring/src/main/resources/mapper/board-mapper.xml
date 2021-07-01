@@ -25,8 +25,9 @@
 		<id column="boardreadcount" property="boardReadCount"/>
 		<collection property="attachments" ofType="attachment">
 			<id column="attachmentno" property="attachmentNo"/>
+			<result column="boardno" property="boardNo"/>
 			<result column="originalfilename" property="originalFileName"/>
-			<result column="renamefilename" property="renameFileName"/>
+			<result column="renamedfilename" property="renameFileName"/>
 			<result column="downloadcount" property="downloadCount"/>
 		</collection>
 		
@@ -37,6 +38,27 @@
 	</resultMap>
 	
 	<select id="selectBoard" parameterType="_int" resultMap="boardMap">
-		SELECT * FROM BOARD LEFT JOIN ATTACHMENT USING(BOARDNO) WHERE BOARDNO = #{ no }
+		SELECT * FROM BOARD LEFT JOIN ATTACHMENT USING(BOARDNO) WHERE BOARDNO = #{ no } ORDER BY BOARDDATE DESC
 	</select>
+	
+	<!-- 210701 -->
+	<insert id="insertBoard">
+	
+		INSERT INTO BOARD VALUES(SEQ_BOARDNO.NEXTVAL, #{boardTitle}, #{boardWriter}, #{boardContent}, default, default)
+		
+		<!-- 본쿼리가 실행되기 전 또는 후에 어떠한 쿼리문을 실행할 수 있음 -->
+		<!-- 위 INSERT문을 실행한 후에 그 row의 BOARDNO를 가져와서 select문을 실행함  -->
+		<selectKey keyProperty="boardNo" resultType="_int" order="AFTER">
+			SELECT SEQ_BOARDNO.CURRVAL FROM DUAL
+		</selectKey>
+		
+	</insert>
+	
+	<insert id="insertAttachment">
+		INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENTNO.NEXTVAL, #{boardNo}, #{originalFileName}, #{renameFileName}, default, default, default)
+	</insert> 
+	
+	
+	
+	
 </mapper>

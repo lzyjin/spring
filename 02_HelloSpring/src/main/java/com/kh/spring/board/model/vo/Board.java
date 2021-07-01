@@ -1,5 +1,6 @@
 package com.kh.spring.board.model.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,5 +21,6 @@ public class Board {
 	private String boardContent;
 	private Date boardDate;
 	private int boardReadCount;
-	private List<Attachment> attachments;
+//	private List<Attachment> attachments;
+	private List<Attachment> attachments = new ArrayList<>();
 }

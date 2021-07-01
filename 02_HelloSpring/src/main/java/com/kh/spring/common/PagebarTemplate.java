@@ -8,28 +8,7 @@ public class PagebarTemplate {
 		int pageNo = ((cPage-1) / pageBarSize) * pageBarSize + 1;
 		int pageEnd = pageNo + pageBarSize - 1;
 		String pageBar = "";
-		
-//		if(pageNo == 1) {
-//			pageBar += "<span>[이전]</span>";
-//		} else {
-//			pageBar += "<span><a href='"+ url + "?cPage=" + (pageNo-1) + "&numPerPage=" + numPerPage + "'>[이전]</a></span>";
-//		}
-//		
-//		while(pageNo <= pageEnd && pageNo <= totalPage) {
-//			if(cPage == pageNo) {
-//				pageBar += "<span>" + pageNo + "</span>";
-//			} else {
-//				pageBar += "<span><a href='"+ url + "?cPage=" + pageNo + "&numPerPage=" + numPerPage + "'>" + pageNo + "</a></span>";
-//			}
-//			pageNo++;
-//		}
-//		
-//		if(pageNo > totalPage) {
-//			pageBar += "<span>[다음]</span>";
-//		} else {
-//			pageBar += "<span><a href='"+ url + "?cPage=" + pageNo + "&numPerPage=" + numPerPage + "'>[다음]</a></span>";
-//		}
-		
+
 		pageBar += "<ul class='pagination justify-content-center pagination-sm'>";
 		
 		if(pageNo == 1) {

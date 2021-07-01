@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.board.model.vo.Attachment;
 import com.kh.spring.board.model.vo.Board;
 
 public interface BoardDao {
@@ -15,5 +16,9 @@ public interface BoardDao {
 	List<Board> selectBoardList(int cPage, int numPerPage, SqlSessionTemplate session);
 
 	Board selectBoard(int boardNo, SqlSessionTemplate session);
+
+	int insertBoard(Board b, SqlSessionTemplate session);
+
+	int insertAttachment(SqlSessionTemplate session, Attachment a);
 
 }

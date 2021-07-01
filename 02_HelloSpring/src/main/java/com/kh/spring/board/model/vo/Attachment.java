@@ -19,5 +19,8 @@ public class Attachment {
 	private Date uploadDate;
 	private int downloadCount;
 	private String status;
+	
+	// 210701
+	private int boardNo;
 
 }
