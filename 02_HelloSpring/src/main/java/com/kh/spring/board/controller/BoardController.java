@@ -201,13 +201,15 @@ public class BoardController {
 	
 	
 	
-	
 	@RequestMapping("/board/fileDownload.do")
 	public void fileDownload(@RequestParam(value="oriname") String oriname,
 											@RequestParam(value="rename") String rename,
 											HttpServletRequest req,
 											HttpServletResponse resp,
 											@RequestHeader(value="user-agent") String header) {
+		
+					log.debug(oriname +" : "+ rename);
+		
 		
 		String path = req.getServletContext().getRealPath("/resources/upload/board/");
 		File saveFile = new File(path + rename);

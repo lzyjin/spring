@@ -70,10 +70,10 @@ public class LoggerAspectAnn {
 		
 		Object[] param = join.getArgs();
 		
-		for(Object p : param) {
-			log.debug("파라미터 : " + p.toString());
-			// log.debug("{}", p);
-		}
+//		for(Object p : param) {
+//			log.debug("파라미터 : " + p.toString());
+//			// log.debug("{}", p);
+//		}
 		
 		log.debug("-----------------------------------------");
 		

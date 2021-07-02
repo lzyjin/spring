@@ -15,11 +15,22 @@
 	<style>
 		div#enroll-container{width:400px; margin:0 auto; text-align:center;}
 		div#enroll-container input, div#enroll-container select {margin-bottom:10px;}
+		div#userid-container{ position:relative; padding:0px; }
+		div#userid-container span.guide{ display:none; font-size:12px; position:absolute; top:12px; right:10px; }
+		div#userid-container span.ok{color:green;}
+		div#userid-container span.error{color:red;}
 	</style>
 	
 	<div id="enroll-container">
 		<form name="memberEnrollFrm"  action="${ path }/member/memberEnrollEnd.do" method="post">
+			<div id="userid-container">
 				<input type="text" class="form-control" placeholder="아이디 (4글자이상)" name="userId" id="userId_" required>
+				<!-- 210702 -->
+				<button type="button" onclick="fn_jsonView();">jsonview</button>
+				<button type="button" onclick="fn_responseBody();">responseBody</button>
+				<span class="guide ok">이 아이디는 사용가능합니다</span>
+				<span class="guide error">이 아이디는 사용할 수 없습니다</span>
+			</div>
 				<input type="password" class="form-control" placeholder="비밀번호" name="password" id="password_" required>
 				<input type="password" class="form-control" placeholder="비밀번호확인" id="password2" required>
 				<input type="text" class="form-control" placeholder="이름" name="userName" id="userName" required>
@@ -45,6 +56,68 @@
 				<input type="reset" class="btn btn-outline-success" value="취소">
 		</form>
 	</div>
+	
+	<script>
+		
+		function fn_responseBody() {
+			$.get("${ path }/member/responseBody.do?userId=" + $("#userId_").val(), data => {
+					console.log(data);
+					$("#userId-container span").hide();
+				
+				}// success 함수 닫기 
+			); // $.get() 닫기 
+		}// function 닫기 
+		
+		
+		function fn_jsonView() {
+			$.get("${ path }/member/checkIdJsonView.do?userId=" + $("#userId_").val(), data => {
+				console.log(data);
+				$("#userId-container span").hide();
+				if(!data['isAble']) {
+					$("#userid-container span.ok").hide();
+					$("#userid-container span.error").show();
+				} else {
+					$("#userid-container span.ok").show();
+					$("#userid-container span.error").hide();
+				}
+			});
+		}
+	
+	
+		$("#userId_").keyup( e => {
+			const userId = e.target.value.trim();
+			if(userId.length < 0) {
+				alert("아이디를 입력하세요");
+				return;
+			} else if(userId.length >= 4) {
+				
+				// get방식으로 간단하게 보낼 수 있음 
+				$.get("${ path }/member/checkUserId.do?userId=" + userId, data => {
+					console.log(data);
+					let member = JSON.parse(data);
+					console.log(member);
+					if(member == null) {
+						$("#userid-container span.ok").show();
+						$("#userid-container span.error").hide();
+					} else {
+						$("#userid-container span.ok").hide();
+						$("#userid-container span.error").show();
+					}
+				})
+				
+				/* $.ajax({
+					url : "${ path }/member/checkUserId.do",
+					data : { "userId" : userId },
+					success : data => {
+						console.log(data);
+					}
+				}) */
+			}
+		} )
+	</script>
+	
+	
+	
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

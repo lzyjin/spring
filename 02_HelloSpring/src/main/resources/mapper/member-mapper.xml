@@ -9,7 +9,7 @@
 		<result column="hobby" property="hobby" typeHandler="com.kh.spring.common.StringArrayTypeHandler"/>
 	</resultMap>
 	
-	<select id="memberLogin" parameterType="member" resultMap="memMap" >
+	<select id="selectMember" parameterType="member" resultMap="memMap" >
 		<!-- SELECT * FROM MEMBER WHERE USERID = #{userId} AND PASSWORD = #{password} -->
 		
 		<!-- 비밀번호가 암호화되었기 때문에  쿼리문이 아니라 controller에서 메소드를 통해 비교해서 로그인시킬지말지 정한다 -->

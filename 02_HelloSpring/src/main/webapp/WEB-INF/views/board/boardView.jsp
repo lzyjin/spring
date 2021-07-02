@@ -10,14 +10,14 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"> 
 	<jsp:param  name="str" value="Board상세"/>
 </jsp:include>
-
-<section id="container">
-
 	<style>
    	 	div#board-container{width:400px; margin:0 auto; text-align:center;}
     	div#board-container input,div#board-container button{margin-bottom:15px;}
     	div#board-container label.custom-file-label{text-align:left;}
     </style>
+
+<section id="container">
+
 
 	<h1 style="text-align:center;">게시글 상세화면</h1>
     
@@ -28,8 +28,7 @@
         <c:if test="${ b.attachments.size() > 0 }">
         	<c:forEach var="a" items="${ b.attachments }" varStatus="vs">
         		<button type="button" class="btn btn-outline-success btn-block" 
-        				onclick="location.assign('${ path }/board/fileDownload.do?oriname=${a.originalFileName }
-        																		 &rename=${ a.renameFileName }')">
+        				onclick="location.assign('${ path }/board/fileDownload.do?oriname=${a.originalFileName }&rename=${ a.renameFileName }')">
         				<c:out value="첨부파일 ${ vs.count } - ${ a.originalFileName }"></c:out>
         		</button>
         	</c:forEach>

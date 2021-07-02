@@ -1,17 +1,28 @@
 package com.kh.spring.member.controller;
 
+import java.io.Writer;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.spring.LoggerTest;
+import com.kh.spring.board.model.service.BoardService;
+import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 
@@ -30,6 +41,11 @@ public class MemberController {
 	// 210625
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder;
+	
+	
+	// 210702
+	@Autowired
+	private BoardService boardService;
 	
 	
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(LoggerTest.class);
@@ -74,7 +90,7 @@ public class MemberController {
 	@RequestMapping("/member/memberLogin.do")
 //	public String memberLogin(@RequestParam(value="userId") String userId, @RequestParam(value="password") String password) {
 //	public String memberLogin(@RequestParam Map param, HttpSession session, Model model) {	
-	public String memberLogin(Member param, Model model, HttpSession session) {	
+	public String selectMember(Member param, Model model, HttpSession session) {	
 		
 				// System.out.println("복호화 전 비번 : " + param.getPassword());
 		
@@ -111,7 +127,7 @@ public class MemberController {
 		// 두 비교값이 일치하면 true, 일치하지 않으면 false
 			
 		
-		Member m = service.memberLogin(param);
+		Member m = service.selectMember(param);
 
 				// System.out.println("controller에서 테스트, m : " + m);
 			
@@ -164,4 +180,70 @@ public class MemberController {
 		// "redirect:주소" 
 		return "redirect:/"; // 메인화면으로 이동 ( url창의 주소가 바뀐다 ) 
 	}
+	
+	
+	
+	// 210702
+	// 기본 ajax 요청 응답하기
+	@RequestMapping("/member/checkUserId.do")
+	public void checkUserId(Member m , HttpServletResponse res, Writer writer) throws Exception{
+		
+		// 여기까지 요청이 들어오는지 확인
+		log.info("{}", m); 
+		log.info("{}", res); 
+		
+		
+		Member result = service.selectMember(m);
+		
+		// res.getWriter().append( result != null ? "false" : "true");
+		// writer.append( result != null ? "false" : "true");
+		
+		// gson 사용하기위해 pom.xml에 gson라이브러리 의존성등록
+		new Gson().toJson(result, writer);
+		
+	}
+	
+	// jsonView를 통한 ajax 처리하기
+	@RequestMapping("/member/checkIdJsonView.do")
+	public ModelAndView jsonviewTest(Member m, ModelAndView mv) {
+		
+		Member result = service.selectMember(m);
+		
+		mv.addObject("isAble", result != null ? false : true);
+		mv.addObject("su", 20);
+		mv.addObject("name", "김태희포");
+		mv.addObject("member", result);
+		
+		//viewName세팅시 등록한 JsonView bean의 id이름으로 설정해야함
+		mv.setViewName("jsonView");
+		
+		return mv;
+		
+	}
+	
+	// @ResponseBody로 ajax 처리하기
+	// 1. jackson data bind 라이브러리를 받아온다 
+	// 2. Beanconfigration.xml에서 jackson클래스를 converter로 등록한다
+	// 3. mapping된 메소드에 @@ResponseBody 어노테이션을 표시한다 ( 클래스선언부에도 작성가능 -> 클래스 안의 모든 메소드에 적용 ) 
+	// 4. 원하는 데이터를 리턴값으로 설정한다
+	@ResponseBody
+	@RequestMapping("/member/responseBody.do")
+	// public Member responseBody(Member m) {
+	// public List<Board> responseBody(Member m) {
+	public Map responseBody(Member m) {
+		
+		Member result = service.selectMember(m);
+		
+		List<Board> list = boardService.selectBoardList(1, 20);
+		
+		Map test = new HashedMap();
+		test.put("member", result);
+		test.put("boardList", list);
+		
+		// return result;
+		// return list;
+		return test;
+	}
+	
+	
 }
