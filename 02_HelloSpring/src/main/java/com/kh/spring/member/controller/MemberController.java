@@ -212,9 +212,9 @@ public class MemberController {
 		mv.addObject("isAble", result != null ? false : true);
 		mv.addObject("su", 20);
 		mv.addObject("name", "김태희포");
-		mv.addObject("member", result);
+		// mv.addObject("member", result);
 		
-		//viewName세팅시 등록한 JsonView bean의 id이름으로 설정해야함
+		// viewName세팅시 등록한 JsonView bean의 id이름으로 설정해야함
 		mv.setViewName("jsonView");
 		
 		return mv;

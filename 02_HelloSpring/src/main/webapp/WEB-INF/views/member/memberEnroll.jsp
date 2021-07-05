@@ -15,6 +15,7 @@
 	<style>
 		div#enroll-container{width:400px; margin:0 auto; text-align:center;}
 		div#enroll-container input, div#enroll-container select {margin-bottom:10px;}
+		
 		div#userid-container{ position:relative; padding:0px; }
 		div#userid-container span.guide{ display:none; font-size:12px; position:absolute; top:12px; right:10px; }
 		div#userid-container span.ok{color:green;}
@@ -61,7 +62,7 @@
 		
 		function fn_responseBody() {
 			$.get("${ path }/member/responseBody.do?userId=" + $("#userId_").val(), data => {
-					console.log(data);
+					console.log(data); // 한글깨지지않음, 객체로 받아옴
 					$("#userId-container span").hide();
 				
 				}// success 함수 닫기 
@@ -94,8 +95,10 @@
 				// get방식으로 간단하게 보낼 수 있음 
 				$.get("${ path }/member/checkUserId.do?userId=" + userId, data => {
 					console.log(data);
-					let member = JSON.parse(data);
+					
+					let member = JSON.parse(data); //string으로 받은 데이터를 자바객체형태로 
 					console.log(member);
+					
 					if(member == null) {
 						$("#userid-container span.ok").show();
 						$("#userid-container span.error").hide();
